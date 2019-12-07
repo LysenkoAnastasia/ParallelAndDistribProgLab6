@@ -25,23 +25,25 @@ public class Anonymization {
     Materializer materializer;
     ActorRef storage;
     ZooKeeper zoo;
+    Http http;
 
-    public Anonymization(AsyncHttpClient asyncHttpClient, ActorSystem system, ActorMaterializer materializer, ZooKeeper zoo) {
+    public Anonymization(AsyncHttpClient asyncHttpClient, ActorSystem system, ActorMaterializer materializer, ZooKeeper zoo, Http http) {
         this.materializer = materializer;
         this.asyncHttpClient = asyncHttpClient;
         this.storage = system.actorOf(Props.create(StorageActor.class));
         this.zoo = zoo;
+        this.http = http;
     }
 
     public Route createRoute(ActorSystem system) {
         ActorRef actorRef = system.actorOf(Props.create(StorageActor.class));
-        Http http = Http.get(context().system());
         return concat(
                 get(() ->
                         parameter("url", url ->
                                 parameter("count", count -> {
                                             int c = Integer.parseInt(count);
                                             if (c > 1) {
+                                                return 
                                             }
                                             return completeOKWithFutureString(
                                                     http.singleRequest(HttpRequest.create(url))
