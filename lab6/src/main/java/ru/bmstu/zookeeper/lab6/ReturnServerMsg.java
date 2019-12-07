@@ -6,5 +6,6 @@ public class ReturnServerMsg {
     public ReturnServerMsg(String server) {
         this.server = server;
     }
-    
+
+
 }
