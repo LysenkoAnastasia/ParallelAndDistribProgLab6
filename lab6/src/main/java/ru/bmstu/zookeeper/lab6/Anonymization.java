@@ -47,7 +47,7 @@ public class Anonymization {
                         parameter("url", url ->
                                 parameter("count", count -> {
                                             int c = Integer.parseInt(count);
-                                        CompletionStage<String> responseCompletionStage;
+                                        CompletionStage<Response> responseCompletionStage;
                                             if (c == 0) {
                                                responseCompletionStage = fetch(url);
                                               return FutureConverters.toJava(Patterns.ask(storage, new GetRandom(), 5000))
@@ -75,8 +75,8 @@ public class Anonymization {
         }
     }
 
-    private CompletionStage<String> fetch(String  url) {
+    private CompletionStage<Response> fetch(String  url) {
         return http.singleRequest(HttpRequest.create(url))
-                .thenApply(r -> r.entity().toString());
+                .thenApply(r -> r.entity();
     }
 }
