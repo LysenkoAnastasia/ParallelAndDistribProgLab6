@@ -28,7 +28,7 @@ public class Main {
         final Http http = Http.get(system);
         final ActorMaterializer materializer =
                 ActorMaterializer.create(system);
-        Anonymization app = new Anonymization(asyncHttpClient, system, materializer);
+        Anonymization app = new Anonymization(asyncHttpClient, system, materializer, zoo);
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute();
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,

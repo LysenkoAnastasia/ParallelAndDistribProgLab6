@@ -7,6 +7,8 @@ import akka.stream.javadsl.Flow;
 
 public class Anonymization {
 
+    public Anonymization(Ass)
+
     public Flow<HttpRequest, HttpResponse, NotUsed> createRoute() {
     }
 }
