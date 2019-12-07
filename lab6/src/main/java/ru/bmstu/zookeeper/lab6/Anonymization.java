@@ -46,9 +46,9 @@ public class Anonymization {
                         parameter("url", url ->
                                 parameter("count", count -> {
                                             int c = Integer.parseInt(count);
-                                        CompletionStage<Response> responseCompletionStage;
+                                        CompletionStage<String> responseCompletionStage;
                                             if (c == 0) {
-                                               responseCompletionStage = fetch(http);
+                                               responseCompletionStage = fetch(url);
                                             }
                                             else {
                                                 responseCompletionStage = null;
@@ -61,7 +61,8 @@ public class Anonymization {
                                 ))));
     }
 
-    private CompletionStage<Response> fetch(Request request) {
-        return null;
+    private CompletionStage<String> fetch(String  url) {
+        return http.singleRequest(HttpRequest.create(url))
+                .thenApply(r -> r.entity().toString());
     }
 }
