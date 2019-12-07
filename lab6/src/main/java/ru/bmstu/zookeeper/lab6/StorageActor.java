@@ -32,7 +32,8 @@ public class StorageActor extends AbstractActor {
         );
     }
 
-    private void putServer() {
+    private void putServer(PutServer putServer) {
+        
 
     }
 }
