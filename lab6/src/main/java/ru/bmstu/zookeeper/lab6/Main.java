@@ -39,14 +39,7 @@ public class Main {
         System.in.read();
         binding
                 .thenCompose(ServerBinding::unbind)
-                .thenAccept(unbound -> {
-                    system.terminate();
-                    try {
-                        asyncHttpClient.close();
-                    } catch (IOException exception) {
-                        exception.printStackTrace();
-                    }
-                });
+                .thenAccept(unbound -> system.terminate());
     }
 
        /* zoo.create("/servers/s", .getBytes(),
