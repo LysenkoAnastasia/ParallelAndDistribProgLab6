@@ -17,6 +17,7 @@ import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.Request;
 import org.asynchttpclient.Response;
+import scala.compat.java8.FutureConverters;
 import scala.concurrent.Future;
 
 import java.util.concurrent.CompletionStage;
@@ -49,7 +50,7 @@ public class Anonymization {
                                         CompletionStage<String> responseCompletionStage;
                                             if (c == 0) {
                                                responseCompletionStage = fetch(url);
-                                              return FutureConverters.toJava(Patterns.ask(storage, new GetRandom(), 5000)
+                                              return FutureConverters.toJava(Patterns.ask(storage, new GetRandom(), 5000))
                                                        .thenApply(s -> (String)s)
                                                        .thenAccept(server -> "");
                                                return complete("");
