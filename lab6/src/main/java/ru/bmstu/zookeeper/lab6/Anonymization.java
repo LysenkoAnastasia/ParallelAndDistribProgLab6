@@ -4,6 +4,7 @@ import akka.NotUsed;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.http.javadsl.Http;
 import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
@@ -32,7 +33,6 @@ public class Anonymization {
 
     public Flow<HttpRequest, HttpResponse, NotUsed> createRoute(ActorSystem system) {
         ActorRef actorRef = system.actorOf(Props.create(StorageActor.class));
-        
         return concat(
                 get(() ->
                         parameter("url", url -> {
