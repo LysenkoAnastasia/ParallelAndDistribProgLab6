@@ -20,8 +20,8 @@ public class StorageActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return receiveBuilder()
+                .match(PutServer.class, this::putServer)
                 .match(GetRandom.class, this::getRandomServer)
-                .match()
                 .build();
     }
 
@@ -35,6 +35,7 @@ public class StorageActor extends AbstractActor {
     private void putServer(PutServer putServer) {
         //this.storage.clear();
         this.storage.addAll(putServer.getServer());
-
     }
+
+    private
 }
