@@ -30,8 +30,8 @@ public class Anonymization {
         this.zoo = zoo;
     }
 
-    public Flow<HttpRequest, HttpResponse, NotUsed> createRoute() {
-        ActorSystem system = ActorSystem.create("test");
+    public Flow<HttpRequest, HttpResponse, NotUsed> createRoute(ActorSystem system) {
+        ActorRef actorRef =
         storage = system.actorOf(Props.create(StorageActor.class));
         return concat(
                 get(() ->
