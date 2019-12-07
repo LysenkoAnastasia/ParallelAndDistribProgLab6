@@ -50,7 +50,9 @@ public class Anonymization {
                                             if (c == 0) {
                                                responseCompletionStage = fetch(http);
                                             }
-                                            else responseCompletionStage 
+                                            else {
+                                                responseCompletionStage = null;
+                                            }
                                             return completeOKWithFutureString(
                                                     http.singleRequest(HttpRequest.create(url))
                                                             .thenApply(r -> r.entity().toString())
@@ -60,6 +62,6 @@ public class Anonymization {
     }
 
     private CompletionStage<Response> fetch(Request request) {
-        return
+        return null;
     }
 }
