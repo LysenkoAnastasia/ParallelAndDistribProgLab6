@@ -70,9 +70,15 @@ public class Anonymization {
     private Route getUrlCount(String url, int count) {
         CompletionStage<Response> responseCompletionStage;
         if (count == 0) {
-            return completeOKWithFutureString(fetch(url)
-                    .thenApply(res -> res.entity().toString()));
+            responseCompletionStage = fetch(url);
         }
+        else {
+            responseCompletionStage = redirectiv()
+        }
+    }
+
+    private CompletionStage<Response> redirectiv() {
+
     }
 
     private CompletionStage<Response> fetch(String  url) {
