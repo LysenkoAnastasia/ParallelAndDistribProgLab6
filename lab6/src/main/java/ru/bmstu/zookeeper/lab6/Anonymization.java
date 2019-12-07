@@ -84,7 +84,6 @@ public class Anonymization {
     }
 
     private CompletionStage<Response> fetch(String  url) {
-        return http.e
         return http.singleRequest(HttpRequest.create(url));
     }
 }
