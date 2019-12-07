@@ -26,7 +26,7 @@ public class StorageActor extends AbstractActor {
 
     private void getRandomServer(GetRandomServer getRandomServer) {
         getSender().tell(
-                
+
         );
 
     }
