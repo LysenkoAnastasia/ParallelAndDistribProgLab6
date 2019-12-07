@@ -1,4 +1,10 @@
 package ru.bmstu.zookeeper.lab6;
 
-public class StorageActor {
+import akka.actor.AbstractActor;
+
+public class StorageActor extends AbstractActor {
+    @java.lang.Override
+    public Receive createReceive() {
+        return null;
+    }
 }
