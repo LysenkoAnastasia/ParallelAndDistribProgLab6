@@ -2,6 +2,7 @@ package ru.bmstu.zookeeper.lab6;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
+import akka.actor.dsl.Inbox;
 import scala.Array;
 import scala.collection.immutable.List;
 
@@ -23,11 +24,11 @@ public class StorageActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return receiveBuilder()
-                .match()
+                .match(GetRandom.class, this::getRandomServer)
                 .match()
     }
 
-    private void getRandomServer() {
+    private void getRandomServer(GetRandom getRandom) {
         getSender().tell(
                 new ReturnServerMsg(storage.get(randomServer.nextInt(storage.size()))),
                 ActorRef.noSender()
