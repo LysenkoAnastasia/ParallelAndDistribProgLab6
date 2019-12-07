@@ -45,9 +45,10 @@ public class Anonymization {
         return concat(
                 get(() ->
                         parameter("url", url ->
-                                parameter("count", count -> {
-                                            int c = Integer.parseInt(count);
-                                        CompletionStage<Response> responseCompletionStage;
+                                parameter("count", count ->
+                                            //int c = Integer.parseInt(count);
+                                            getUrlCount(url, Integer.parseInt(count))
+                                        /*CompletionStage<Response> responseCompletionStage;
                                             if (c == 0) {
                                                responseCompletionStage = fetch(url);
                                               return FutureConverters.toJava(Patterns.ask(storage, new GetRandom(), 5000))
@@ -62,13 +63,12 @@ public class Anonymization {
                                             return completeOKWithFutureString(
                                                     http.singleRequest(HttpRequest.create(url))
                                                             .thenApply(r -> r.entity().toString())
-                                            );
-                                        }
+                                            );*/
                                 ))));
     }
 
     private Route getUrlCount(String url, int count) {
-        CompletionStage<String> responseCompletionStage;
+        CompletionStage<Response> responseCompletionStage;
         if (count == 0) {
             return completeOKWithFutureString(fetch(url)
                     .thenApply(res -> res.entity().toString()));
