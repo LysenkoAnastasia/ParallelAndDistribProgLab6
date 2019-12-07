@@ -20,6 +20,27 @@ public class Main {
         final Http http = Http.get(system);
         final ActorMaterializer materializer =
                 ActorMaterializer.create(system);
+        Anonymization app = new Anonymization(asyncHttpClient, system, materializer);
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute();
+        final CompletionStage<ServerBinding> binding = http.bindAndHandle(
+                routeFlow,
+                ConnectHttp.toHost("localhost", 8085),
+                materializer
+        );
+
+        System.out.println("Server online at http://localhost:8085/\nPress RETURN to stop...");
+        System.in.read();
+        binding
+                .thenCompose(ServerBinding::unbind)
+                .thenAccept(unbound -> {
+                    system.terminate();
+                    try {
+                        asyncHttpClient.close();
+                    } catch (IOException exception) {
+                        exception.printStackTrace();
+                    }
+                });
+    }
 
        /* zoo.create("/servers/s", .getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE ,
