@@ -6,13 +6,16 @@ import scala.collection.immutable.List;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class StorageActor extends AbstractActor {
     private ArrayList<String> storage ;
+    private Random randomServer;
 
 
     public StorageActor() {
         this.storage = new ArrayList<>();
+        this.randomServer = new Random();
 
     }
 
