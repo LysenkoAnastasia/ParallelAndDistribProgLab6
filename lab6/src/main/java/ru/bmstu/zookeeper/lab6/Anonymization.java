@@ -80,7 +80,8 @@ public class Anonymization {
                 .thenApply(s -> (String)s)
                 .thenCompose(server ->  
 
-                );
+                )
+        .thenApply(r -> r.entity().toString());
 
     }
 
