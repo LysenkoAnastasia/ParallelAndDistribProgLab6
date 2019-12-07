@@ -23,4 +23,8 @@ public class StorageActor extends AbstractActor {
     public Receive createReceive() {
         return null;
     }
+
+    private void getRandomServer() {
+
+    }
 }
