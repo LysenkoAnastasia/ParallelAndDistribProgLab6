@@ -8,6 +8,8 @@ import org.apache.zookeeper.ZooKeeper;
 
 import java.util.List;
 
+import static org.asynchttpclient.Dsl.asyncHttpClient;
+
 public class Main {
 
     public static void main(String[] args) {
