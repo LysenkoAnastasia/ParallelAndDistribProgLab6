@@ -24,8 +24,9 @@ public class StorageActor extends AbstractActor {
         return null;
     }
 
-    private void getRandomServer(GetRandomServer getRandomServer) {
+    private void getRandomServer() {
         getSender().tell(
+                new ReturnServerMsg(storage.get(randomServer.nextInt()))
 
         );
 
