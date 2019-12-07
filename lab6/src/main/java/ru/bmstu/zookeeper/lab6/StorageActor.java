@@ -22,6 +22,7 @@ public class StorageActor extends AbstractActor {
         return receiveBuilder()
                 .match(GetRandom.class, this::getRandomServer)
                 .match()
+                .build();
     }
 
     private void getRandomServer(GetRandom getRandom) {
@@ -29,5 +30,9 @@ public class StorageActor extends AbstractActor {
                 new ReturnServerMsg(storage.get(randomServer.nextInt(storage.size()))),
                 ActorRef.noSender()
         );
+    }
+
+    private void putServer() {
+
     }
 }
