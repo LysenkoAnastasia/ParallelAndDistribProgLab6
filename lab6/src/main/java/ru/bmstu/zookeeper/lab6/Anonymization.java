@@ -8,6 +8,7 @@ import akka.http.javadsl.Http;
 import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
+import akka.http.javadsl.server.Route;
 import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.Materializer;
@@ -16,6 +17,7 @@ import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
 import scala.concurrent.Future;
 
+import static akka.actor.TypedActor.context;
 import static akka.http.javadsl.server.Directives.*;
 
 public class Anonymization {
@@ -31,20 +33,21 @@ public class Anonymization {
         this.zoo = zoo;
     }
 
-    public Flow<HttpRequest, HttpResponse, NotUsed> createRoute(ActorSystem system) {
+    public Route createRoute(ActorSystem system) {
         ActorRef actorRef = system.actorOf(Props.create(StorageActor.class));
-
+        Http http = Http.get(context().system());
         return concat(
                 get(() ->
                         parameter("url", url ->
                                 parameter("count", count -> {
-                                    int c = Integer.parseInt(count);
-                                    if (c > 1) {
-                                        return completeOKWithFutureString(
-                                                asyncHttpClient.
-                                        )
-                                    }
-                                }
+                                            int c = Integer.parseInt(count);
+                                            if (c > 1) {
+                                            }
+                                            return completeOKWithFutureString(
+                                                    http.singleRequest(HttpRequest.create(url))
+                                                            .thenApply(r -> r.entity().toString())
+                                            );
+                                        }
                                 ))));
     }
 
