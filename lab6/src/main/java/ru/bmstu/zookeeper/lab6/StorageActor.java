@@ -33,8 +33,8 @@ public class StorageActor extends AbstractActor {
     }
 
     private void putServer(PutServer putServer) {
-        this.storage.clear();
-        this.storage.addAll(putServer)
+        //this.storage.clear();
+        this.storage.addAll(putServer.getServer());
 
     }
 }
