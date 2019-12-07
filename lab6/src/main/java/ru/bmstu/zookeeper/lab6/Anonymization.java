@@ -36,7 +36,12 @@ public class Anonymization {
         return concat(
                 get(() ->
                         parameter("url", url ->
-                                parameter("", )
-                                )));
+                                parameter("count", count -> {
+                                    int c = Integer.parseInt(count);
+                                    if (c > 1) {
+
+                                    }
+                                }
+                                ))));
     }
 }
