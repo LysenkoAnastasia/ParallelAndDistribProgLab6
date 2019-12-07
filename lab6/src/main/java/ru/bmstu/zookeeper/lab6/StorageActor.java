@@ -1,6 +1,7 @@
 package ru.bmstu.zookeeper.lab6;
 
 import akka.actor.AbstractActor;
+import akka.actor.ActorRef;
 import scala.Array;
 import scala.collection.immutable.List;
 
@@ -26,9 +27,8 @@ public class StorageActor extends AbstractActor {
 
     private void getRandomServer() {
         getSender().tell(
-                new ReturnServerMsg(storage.get(randomServer.nextInt()))
-
+                new ReturnServerMsg(storage.get(randomServer.nextInt(storage.size()))),
+                ActorRef.noSender()
         );
-
     }
 }
