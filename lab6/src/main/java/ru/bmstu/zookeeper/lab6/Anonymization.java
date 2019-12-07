@@ -35,7 +35,7 @@ public class Anonymization {
         storage = system.actorOf(Props.create(StorageActor.class));
         return concat(
                 get(() ->
-                        parameter("packageId", id -> {
+                        parameter("url", url -> {
                             Future<Object> result = Patterns.ask(storage,
                                     new TestPackage(Long.parseLong(id)),
                                     5000);
