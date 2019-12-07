@@ -31,7 +31,7 @@ public class Anonymization {
     }
 
     public Flow<HttpRequest, HttpResponse, NotUsed> createRoute(ActorSystem system) {
-        ActorRef actorRef =
+        ActorRef actorRef = system.actorOf(Props.create(StorageActor:))
         storage = system.actorOf(Props.create(StorageActor.class));
         return concat(
                 get(() ->
