@@ -29,7 +29,7 @@ public class Main {
         final ActorMaterializer materializer =
                 ActorMaterializer.create(system);
         Anonymization app = new Anonymization(asyncHttpClient, system, materializer, zoo);
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute(system).flow();
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute(system).flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
                 ConnectHttp.toHost("localhost", 8085),
