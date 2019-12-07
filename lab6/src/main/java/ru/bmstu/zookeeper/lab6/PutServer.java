@@ -1,6 +1,8 @@
 package ru.bmstu.zookeeper.lab6;
 
+import java.util.ArrayList;
+
 public class PutServer {
-    private String server;
-    
+    private ArrayList<String> server;
+
 }
