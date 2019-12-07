@@ -24,7 +24,7 @@ public class StorageActor extends AbstractActor {
         return null;
     }
 
-    private void getRandomServer() {
+    private void GetRandomServer() {
 
     }
 }
