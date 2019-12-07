@@ -51,8 +51,8 @@ public class Anonymization {
                                                responseCompletionStage = fetch(url);
                                                Patterns.ask(storage, new GetRandom(), 5000)
                                                        .thenApply(s -> (String)s)
-                                                       .thenAccept(server -> );
-                                               return complete();
+                                                       .thenAccept(server -> "");
+                                               return complete("");
                                             }
                                             else {
                                                 responseCompletionStage = null;
