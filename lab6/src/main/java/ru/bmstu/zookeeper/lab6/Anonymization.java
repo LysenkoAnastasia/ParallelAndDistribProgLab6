@@ -43,7 +43,8 @@ public class Anonymization {
                                 parameter("count", count -> {
                                             int c = Integer.parseInt(count);
                                             if (c > 1) {
-                                                return 
+                                                return http.singleRequest(HttpRequest.create())
+                                                        .thenApply()
                                             }
                                             return completeOKWithFutureString(
                                                     http.singleRequest(HttpRequest.create(url))
