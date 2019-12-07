@@ -15,7 +15,11 @@ import akka.stream.Materializer;
 import akka.stream.javadsl.Flow;
 import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
+import org.asynchttpclient.Request;
+import org.asynchttpclient.Response;
 import scala.concurrent.Future;
+
+import java.util.concurrent.CompletionStage;
 
 import static akka.actor.TypedActor.context;
 import static akka.http.javadsl.server.Directives.*;
@@ -43,7 +47,7 @@ public class Anonymization {
                                 parameter("count", count -> {
                                             int c = Integer.parseInt(count);
                                             if (c > 1) {
-                                                return http.
+                                                return fetch(http.);
                                             }
                                             return completeOKWithFutureString(
                                                     http.singleRequest(HttpRequest.create(url))
@@ -51,5 +55,9 @@ public class Anonymization {
                                             );
                                         }
                                 ))));
+    }
+
+    private CompletionStage<Response> fetch(Request request) {
+        return
     }
 }
