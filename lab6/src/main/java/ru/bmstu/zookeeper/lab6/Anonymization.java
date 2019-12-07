@@ -51,11 +51,7 @@ public class Anonymization {
                                         /*CompletionStage<Response> responseCompletionStage;
                                             if (c == 0) {
                                                responseCompletionStage = fetch(url);
-                                              return FutureConverters.toJava(Patterns.ask(storage, new GetRandom(), 5000))
-                                                       .thenApply(s -> (String)s)
-                                                       .thenCompose(server -> {
-
-                                                       });
+                                              return
                                             }
                                             else {
                                                 responseCompletionStage = null;
@@ -80,6 +76,11 @@ public class Anonymization {
     }
 
     private CompletionStage<Response> redirectiv(String url, int count) {
+        FutureConverters.toJava(Patterns.ask(storage, new GetRandom(), 5000))
+                .thenApply(s -> (String)s)
+                .thenCompose(server ->  
+
+                );
 
     }
 
