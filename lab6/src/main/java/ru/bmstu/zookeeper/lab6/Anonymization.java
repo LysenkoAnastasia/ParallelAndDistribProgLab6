@@ -52,8 +52,9 @@ public class Anonymization {
                                                responseCompletionStage = fetch(url);
                                               return FutureConverters.toJava(Patterns.ask(storage, new GetRandom(), 5000))
                                                        .thenApply(s -> (String)s)
-                                                       .thenAccept(server -> "");
-                                               return complete("");
+                                                       .thenCompose(server -> {
+                                                           
+                                                       })
                                             }
                                             else {
                                                 responseCompletionStage = null;
