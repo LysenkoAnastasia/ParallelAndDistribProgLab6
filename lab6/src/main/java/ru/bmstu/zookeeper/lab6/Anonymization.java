@@ -49,7 +49,7 @@ public class Anonymization {
                                         CompletionStage<String> responseCompletionStage;
                                             if (c == 0) {
                                                responseCompletionStage = fetch(url);
-                                              return Patterns.ask(storage, new GetRandom(), 5000)
+                                              return FutureConverters.toJava(Patterns.ask(storage, new GetRandom(), 5000)
                                                        .thenApply(s -> (String)s)
                                                        .thenAccept(server -> "");
                                                return complete("");
