@@ -4,13 +4,18 @@ import akka.NotUsed;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
+import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.Materializer;
 import akka.stream.javadsl.Flow;
 import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
+import scala.concurrent.Future;
+
+import static akka.http.javadsl.server.Directives.*;
 
 public class Anonymization {
     AsyncHttpClient asyncHttpClient;
@@ -27,18 +32,18 @@ public class Anonymization {
 
     public Flow<HttpRequest, HttpResponse, NotUsed> createRoute() {
         ActorSystem system = ActorSystem.create("test");
-        routerActor = system.actorOf(Props.create(RoutActor.class));
+        storage = system.actorOf(Props.create(StorageActor.class));
         return concat(
                 get(() ->
                         parameter("packageId", id -> {
-                            Future<Object> result = Patterns.ask(routerActor,
+                            Future<Object> result = Patterns.ask(storage,
                                     new TestPackage(Long.parseLong(id)),
                                     5000);
                             return completeOKWithFuture(result, Jackson.marshaller());
                         })),
                 post(() ->
                         entity(Jackson.unmarshaller(TestPackageMsg.class), msg -> {
-                            routerActor.tell(msg, ActorRef.noSender());
+                            storage.tell(msg, ActorRef.noSender());
                             return complete("Test started!\n");
                         })));
     }
