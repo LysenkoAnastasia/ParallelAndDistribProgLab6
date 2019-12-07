@@ -35,17 +35,8 @@ public class Anonymization {
         ActorRef actorRef = system.actorOf(Props.create(StorageActor.class));
         return concat(
                 get(() ->
-                        parameter("url", url -> {
-                            Future<Object> result = Patterns.ask(storage,
-                                    new TestPackage(Long.parseLong(id)),
-                                    5000);
-                            return completeOKWithFuture(result, Jackson.marshaller());
-                        })),
-                post(() ->
-                        entity(Jackson.unmarshaller(TestPackageMsg.class), msg -> {
-                            storage.tell(msg, ActorRef.noSender());
-                            return complete("Test started!\n");
-                        })));
-    }
+                        parameter("url", url ->
+                                parameter("", )
+                                )));
     }
 }
