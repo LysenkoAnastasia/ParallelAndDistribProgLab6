@@ -26,6 +26,21 @@ public class Anonymization {
     }
 
     public Flow<HttpRequest, HttpResponse, NotUsed> createRoute() {
-        
+        ActorSystem system = ActorSystem.create("test");
+        routerActor = system.actorOf(Props.create(RoutActor.class));
+        return concat(
+                get(() ->
+                        parameter("packageId", id -> {
+                            Future<Object> result = Patterns.ask(routerActor,
+                                    new TestPackage(Long.parseLong(id)),
+                                    5000);
+                            return completeOKWithFuture(result, Jackson.marshaller());
+                        })),
+                post(() ->
+                        entity(Jackson.unmarshaller(TestPackageMsg.class), msg -> {
+                            routerActor.tell(msg, ActorRef.noSender());
+                            return complete("Test started!\n");
+                        })));
+    }
     }
 }
