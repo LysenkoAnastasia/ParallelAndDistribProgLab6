@@ -20,7 +20,7 @@ import static org.asynchttpclient.Dsl.asyncHttpClient;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         if(args.length != 2) {
             System.out.println("error");
         }
@@ -38,12 +38,13 @@ public class Main {
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute(system).flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
-                ConnectHttp.toHost("localhost", 8085),
+                ConnectHttp.toHost("localhost", port),
                 materializer
         );
 
-        System.out.println("Server online at http://localhost:8085/\nPress RETURN to stop...");
+        System.out.println("Server online at" + host + port  +"/\nPress RETURN to stop...");
         System.in.read();
+        zoo.close();
         binding
                 .thenCompose(ServerBinding::unbind)
                 .thenAccept(unbound -> system.terminate());
