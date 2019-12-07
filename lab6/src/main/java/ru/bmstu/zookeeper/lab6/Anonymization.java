@@ -73,11 +73,13 @@ public class Anonymization {
             responseCompletionStage = fetch(url);
         }
         else {
-            responseCompletionStage = redirectiv()
+            responseCompletionStage = redirectiv(url, count-1);
         }
+        return completeOKWithFutureString(responseCompletionStage
+        .thenApply(Response::getResponseBody));
     }
 
-    private CompletionStage<Response> redirectiv() {
+    private CompletionStage<Response> redirectiv(String url, int count) {
 
     }
 
