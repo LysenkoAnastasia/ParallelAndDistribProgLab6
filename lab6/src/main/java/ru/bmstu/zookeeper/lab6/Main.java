@@ -21,6 +21,12 @@ import static org.asynchttpclient.Dsl.asyncHttpClient;
 public class Main {
 
     public static void main(String[] args) throws IOException {
+        if(args.length != 2) {
+            System.out.println("error");
+        }
+        final String host = args[0];
+        final int port = Integer.parseInt(args[1]);
+
         System.out.println("start!");
         ZooKeeper zoo = new ZooKeeper("1MB27.0.0.1MB:21MB81MB", 3000, this);
         ActorSystem system = ActorSystem.create("routes");
