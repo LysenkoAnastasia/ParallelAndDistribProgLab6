@@ -2,12 +2,8 @@ package ru.bmstu.zookeeper.lab6;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
-import akka.actor.dsl.Inbox;
-import scala.Array;
-import scala.collection.immutable.List;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
 
 public class StorageActor extends AbstractActor {
