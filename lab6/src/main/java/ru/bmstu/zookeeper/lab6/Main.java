@@ -39,7 +39,7 @@ public class Main {
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute(system).flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
-                ConnectHttp.toHost("localhost", port),
+                ConnectHttp.toHost(host, port),
                 materializer
         );
 
