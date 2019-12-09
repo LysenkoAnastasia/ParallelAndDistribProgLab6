@@ -65,7 +65,8 @@ public class Anonymization {
 
     private CompletionStage<Response> redirectiv(String url, int count) {
         FutureConverters.toJava(Patterns.ask(storage, new GetRandom(), 5000))
-                .thenApply(s -> ((ReturnServerMsg)s).getServer())
+                .thenApply(s -> ((ReturnServerMsg)s))
+                .thenApply(ser -> ser.getServer())
                 .thenCompose(server -> fetch()
 
                 )
