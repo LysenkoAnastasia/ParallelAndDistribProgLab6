@@ -67,14 +67,14 @@ public class Anonymization {
         FutureConverters.toJava(Patterns.ask(storage, new GetRandom(), 5000))
                 .thenApply(s -> ((ReturnServerMsg)s))
                 .thenApply(ser -> ser.getServer())
-                .thenCompose(server -> fetch()
+                .thenCompose(server -> fetch(createRequest(server, url, count))
                 )
         .thenApply(r -> r.entity().toString());
 
     }
 
-    private Request createRequest(String server, String url, int count) {
-        return  server + url+ count;
+    private String createRequest(String server, String url, int count) {
+        return  server + url + count;
 
     }
 
