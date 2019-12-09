@@ -24,6 +24,7 @@ public class Main {
         if(args.length != 2) {
             System.out.println("error");
         }
+
         final String host = args[0];
         final int port = Integer.parseInt(args[1]);
 
