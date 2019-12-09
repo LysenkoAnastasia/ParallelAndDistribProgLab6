@@ -68,7 +68,6 @@ public class Anonymization {
                 .thenApply(s -> ((ReturnServerMsg)s))
                 .thenApply(ser -> ser.getServer())
                 .thenCompose(server -> fetch()
-
                 )
         .thenApply(r -> r.entity().toString());
 
