@@ -74,7 +74,7 @@ public class Anonymization {
     }
 
     private Request createRequest() {
-        
+
     }
 
     private CompletionStage<HttpResponse> fetch(String  url) {
