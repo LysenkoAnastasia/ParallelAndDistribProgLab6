@@ -73,7 +73,8 @@ public class Anonymization {
 
     }
 
-    private Request createRequest() {
+    private Request createRequest(String server, String url, int count) {
+        return  server + url+ count;
 
     }
 
