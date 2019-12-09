@@ -48,18 +48,6 @@ public class Anonymization {
                                 parameter("count", count ->
                                             //int c = Integer.parseInt(count);
                                             getUrlCount(url, Integer.parseInt(count))
-                                        /*CompletionStage<Response> responseCompletionStage;
-                                            if (c == 0) {
-                                               responseCompletionStage = fetch(url);
-                                              return
-                                            }
-                                            else {
-                                                responseCompletionStage = null;
-                                            }
-                                            return completeOKWithFutureString(
-                                                    http.singleRequest(HttpRequest.create(url))
-                                                            .thenApply(r -> r.entity().toString())
-                                            );*/
                                 ))));
     }
 
