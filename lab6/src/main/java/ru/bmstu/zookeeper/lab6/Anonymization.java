@@ -82,4 +82,10 @@ public class Anonymization {
     private CompletionStage<HttpResponse> fetch(String  url) {
         return http.singleRequest(HttpRequest.GET(url));
     }
+
+    private CompletionStage<String> getContent(String url) {
+        return fetch(url)
+                .thenCompose(r -> r.entity().toStrict())
+    }
 }
+
