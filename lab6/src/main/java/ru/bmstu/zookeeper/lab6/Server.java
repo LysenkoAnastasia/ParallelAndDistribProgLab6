@@ -17,7 +17,7 @@ public class Server {
     public Server(ZooKeeper zoo, ActorRef storage) throws IOException, Exception, InterruptedException {
         this.zoo = zoo;
         this.storage = storage;
-
+        watchChildren(null);
     }
 
     public void createServer(String host, int port, String name) throws Exception {
