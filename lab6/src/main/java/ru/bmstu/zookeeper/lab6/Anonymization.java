@@ -81,5 +81,9 @@ public class Anonymization {
                 .thenCompose(r -> r.entity().toStrict(3000, materializer))
                 .thenApply(str -> str.getData().utf8String());
     }
+
+    private String getServer(){
+        
+    }
 }
 
