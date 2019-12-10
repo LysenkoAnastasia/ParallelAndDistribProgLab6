@@ -46,7 +46,7 @@ public class Server {
 
     public void saveServer(List<String> servers) {
         for (String s : servers) {
-
+            
         }
         this.storage.tell(new PutServer(servers), ActorRef.noSender());
 
