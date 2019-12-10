@@ -22,6 +22,7 @@ public class Server {
         zoo.create(
                 "/servers", "".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT
         );
+        System.out.println("Ceate server");
     }
 
     private void watchChildren(WatchedEvent watchedEvent) {
