@@ -1,15 +1,16 @@
 package ru.bmstu.zookeeper.lab6;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PutServer {
-    private ArrayList<String> server;
+    private List<String> server;
 
-   public PutServer(ArrayList<String> server) {
+   public PutServer(List<String> server) {
         this.server = server;
     }
 
-    public ArrayList<String> getServer() {
+    public List<String> getServer() {
         return server;
     }
 }

@@ -38,13 +38,13 @@ public class Server {
         }
 
         try {
-
+            saveServer( zoo.getChildren("/servers", this::watchChildren));
         } catch (Exception e) {
             throw  new RuntimeException(e);
         }
     }
 
-    public void saveServer(ArrayList<String> servers) {
+    public void saveServer(List<String> servers) {
         this.storage.tell(new PutServer(servers), ActorRef.noSender());
 
     }
