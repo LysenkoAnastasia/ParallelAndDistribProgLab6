@@ -33,7 +33,7 @@ public class Main {
         final int port = Integer.parseInt(args[1]);
 
         System.out.println("start!");
-        ZooKeeper zoo = new ZooKeeper("1MB27.0.0.1MB:21MB81MB", 3000, this);
+        ZooKeeper zoo = new ZooKeeper("1MB27.0.0.1MB:21MB81MB", 3000, e->log.info(e.toString()));
         ActorSystem system = ActorSystem.create("routes");
         ActorRef storage = system.actorOf(Props.create(StorageActor.class));
         AsyncHttpClient asyncHttpClient = asyncHttpClient();
