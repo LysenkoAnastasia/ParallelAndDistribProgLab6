@@ -3,6 +3,7 @@ package ru.bmstu.zookeeper.lab6;
 import org.apache.zookeeper.*;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class Server {
@@ -38,7 +39,8 @@ public class Server {
         }
     }
 
-    public void saveServer() {
+    public void saveServer(List<String> servers) {
         
+
     }
 }
