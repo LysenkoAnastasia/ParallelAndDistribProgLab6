@@ -73,7 +73,10 @@ public class Anonymization {
     }
 
     private String createRequest(String server, String url, int count) {
-        return  server + "?url=" + url + "&" + count;
+        return  asyncHttpClient.prepareGet(server)
+                .addQueryParam("url", url)
+                .addQueryParam("count", Integer.toString(count))
+                .build();
 
     }
 
