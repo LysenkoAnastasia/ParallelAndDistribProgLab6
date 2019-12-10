@@ -4,6 +4,8 @@ import akka.actor.ActorRef;
 import org.apache.zookeeper.*;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -42,8 +44,8 @@ public class Server {
         }
     }
 
-    public void saveServer(List<String> servers) {
-        this.storage.tell(PutServer.class, ActorRef.noSender());
+    public void saveServer(ArrayList<String> servers) {
+        this.storage.tell(new PutServer(servers), ActorRef.noSender());
 
     }
 }
