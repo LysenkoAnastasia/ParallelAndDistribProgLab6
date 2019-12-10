@@ -53,7 +53,7 @@ public class Anonymization {
     }
 
     private Route getUrlCount(String url, int count) {
-        CompletionStage<Response> responseCompletionStage;
+        CompletionStage<HttpResponse> responseCompletionStage;
         if (count == 0) {
             responseCompletionStage = fetch(url);
         }
@@ -64,7 +64,7 @@ public class Anonymization {
         .thenApply(Response::getResponseBody));
     }
 
-    private CompletionStage<Response> redirectiv(String url, int count) {
+    private CompletionStage<HttpResponse> redirectiv(String url, int count) {
         FutureConverters.toJava(Patterns.ask(storage, new GetRandom(), 5000))
                 .thenApply(s -> ((ReturnServerMsg)s))
                 .thenApply(ser -> ser.getServer())
