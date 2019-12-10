@@ -24,7 +24,7 @@ public class Server {
 
     }
 
-    public void createServer(String host, String port) throws Exception {
+    public void createServer(String host, int port) throws Exception {
         zoo.create(
                 "/servers", "".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT
         );
