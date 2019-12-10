@@ -85,7 +85,8 @@ public class Anonymization {
 
     private CompletionStage<String> getContent(String url) {
         return fetch(url)
-                .thenCompose(r -> r.entity().toStrict())
+                .thenCompose(r -> r.entity().toStrict(3000, materializer))
+                .thenApply()
     }
 }
 
