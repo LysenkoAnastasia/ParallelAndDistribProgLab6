@@ -12,7 +12,7 @@ public class Server {
     private ZooKeeper zoo;
     private Logger log = Logger.getLogger(Server.class.getCanonicalName());
 
-    public Server(String connectString) throws IOException, KeeperException, InterruptedException {
+    public Server(String connectString) throws IOException, Exception, InterruptedException {
         this.zoo = new ZooKeeper(connectString, 3000, e -> log.info(e.toString()));
 
         this.zoo.create(
