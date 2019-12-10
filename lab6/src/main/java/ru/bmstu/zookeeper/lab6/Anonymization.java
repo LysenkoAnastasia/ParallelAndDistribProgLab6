@@ -40,7 +40,7 @@ public class Anonymization {
         this.http = http;
     }
 
-    public Route createRoute(ActorSystem system) {
+    public Route createRoute() {
         return concat(
                 get(() ->
                         parameter("url", url ->
