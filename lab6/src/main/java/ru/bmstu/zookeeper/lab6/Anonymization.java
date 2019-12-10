@@ -47,8 +47,9 @@ public class Anonymization {
     private Route getUrlCount(String url, int count) {
         CompletionStage<Response> responseCompletionStage;
         if (count == 0) {
-            responseCompletionStage = fetch((Request) asyncHttpClient
-                    .prepareGet(url));
+            responseCompletionStage = fetch(asyncHttpClient
+                    .prepareGet(url)
+                    .build());
         }
         else {
             responseCompletionStage = redirectiv(url, count-1);
@@ -84,7 +85,7 @@ public class Anonymization {
     }*/
 
     private String getServer(){
-
+        return new String();
     }
 }
 
