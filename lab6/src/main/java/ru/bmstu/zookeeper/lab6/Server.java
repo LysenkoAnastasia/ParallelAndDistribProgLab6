@@ -26,4 +26,8 @@ public class Server {
                 "/servers", "".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT
         );
     }
+
+    private void watchChildren() {
+        
+    }
 }
