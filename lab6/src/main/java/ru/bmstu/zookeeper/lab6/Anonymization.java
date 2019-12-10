@@ -21,12 +21,13 @@ import scala.compat.java8.FutureConverters;
 import scala.concurrent.Future;
 
 import java.util.concurrent.CompletionStage;
+import java.util.logging.Logger;
 
 import static akka.actor.TypedActor.context;
 import static akka.http.javadsl.server.Directives.*;
 
 public class Anonymization {
-
+    private static Logger log = Logger.getLogger(Anonymization.class.getName());
     AsyncHttpClient asyncHttpClient;
     Materializer materializer;
     ActorRef storage;
