@@ -14,8 +14,8 @@ public class Server {
     private Logger log = Logger.getLogger(Server.class.getName());
     private ActorRef storage;
 
-    public Server(String connectString, ActorRef storage) throws IOException, Exception, InterruptedException {
-        this.zoo = new ZooKeeper(connectString, 3000, e -> log.info(e.toString()));
+    public Server(ZooKeeper zoo, ActorRef storage) throws IOException, Exception, InterruptedException {
+        this.zoo = zoo;
         this.storage = storage;
 
         this.zoo.create(
