@@ -32,7 +32,6 @@ public class Server {
     }
 
     private void watchChildren(WatchedEvent watchedEvent) {
-
         if (watchedEvent != null){
             System.out.println(watchedEvent.toString());
         }
@@ -46,7 +45,7 @@ public class Server {
 
     public void saveServer(List<String> servers) {
         for (String s : servers) {
-            
+
         }
         this.storage.tell(new PutServer(servers), ActorRef.noSender());
 
