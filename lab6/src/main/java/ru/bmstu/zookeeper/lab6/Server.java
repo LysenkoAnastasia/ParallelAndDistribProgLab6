@@ -11,6 +11,7 @@ public class Server {
 
     public Server(String connectString) throws IOException {
         this.zoo = new ZooKeeper(connectString, 3000, e -> log.info(e.toString()));
+        
 
     }
 }
