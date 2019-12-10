@@ -26,7 +26,7 @@ public class Main {
         if(args.length != 2) {
             System.out.println("error");
         }
-        Logger log = Logger.getLogger(Server.class.getName());
+        private static Logger log = Logger.getLogger(Main.class.getName());
         final String host = args[0];
         final int port = Integer.parseInt(args[1]);
 
