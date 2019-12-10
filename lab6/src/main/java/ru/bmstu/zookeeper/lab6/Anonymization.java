@@ -32,10 +32,10 @@ public class Anonymization {
     ZooKeeper zoo;
     Http http;
 
-    public Anonymization(AsyncHttpClient asyncHttpClient, ActorSystem system, ActorMaterializer materializer, ZooKeeper zoo, Http http) {
+    public Anonymization(AsyncHttpClient asyncHttpClient, ActorRef storage, ActorMaterializer materializer, ZooKeeper zoo, Http http) {
         this.materializer = materializer;
         this.asyncHttpClient = asyncHttpClient;
-        this.storage = system.actorOf(Props.create(StorageActor.class));
+        this.storage = storage;
         this.zoo = zoo;
         this.http = http;
     }
