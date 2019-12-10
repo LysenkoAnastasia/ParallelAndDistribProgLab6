@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 public class Server {
     private ZooKeeper zoo;
     private Logger log = Logger.getLogger(Server.class.getName());
+    
 
     public Server(String connectString) throws IOException, Exception, InterruptedException {
         this.zoo = new ZooKeeper(connectString, 3000, e -> log.info(e.toString()));
@@ -40,7 +41,7 @@ public class Server {
     }
 
     public void saveServer(List<String> servers) {
-        
+        this
 
     }
 }
