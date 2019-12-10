@@ -20,9 +20,10 @@ public class Server {
 
     }
 
-    public void createServer(String host, int port) throws Exception {
+    public void createServer(String host, int port, String name) throws Exception {
         zoo.create(
-                "/servers", "".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT
+                "/servers/" + name, (host + ":" + port).getBytes(),
+                ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT
         );
         System.out.println("Ceate server");
     }
