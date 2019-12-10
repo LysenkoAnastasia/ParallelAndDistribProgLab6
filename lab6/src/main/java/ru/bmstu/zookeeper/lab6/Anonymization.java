@@ -75,7 +75,7 @@ public class Anonymization {
     }
 
     private String createRequest(String server, String url, int count) {
-        return  server + url + count;
+        return  server + "?url=" + url + "&" + count;
 
     }
 
