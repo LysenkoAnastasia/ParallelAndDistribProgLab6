@@ -55,7 +55,8 @@ public class Anonymization {
     private Route getUrlCount(String url, int count) {
         CompletionStage<HttpResponse> responseCompletionStage;
         if (count == 0) {
-            responseCompletionStage = fetch(url);
+            responseCompletionStage = fetch(url)
+            .thenApply(r _> r);
         }
         else {
             responseCompletionStage = redirectiv(url, count-1);
