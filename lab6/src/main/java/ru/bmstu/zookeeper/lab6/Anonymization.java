@@ -47,7 +47,8 @@ public class Anonymization {
     private Route getUrlCount(String url, int count) {
         CompletionStage<Response> responseCompletionStage;
         if (count == 0) {
-            responseCompletionStage = fetch(url);
+            responseCompletionStage = fetch((Request) asyncHttpClient
+                    .prepareGet(url));
         }
         else {
             responseCompletionStage = redirectiv(url, count-1);
@@ -76,14 +77,14 @@ public class Anonymization {
         return asyncHttpClient.executeRequest(request).toCompletableFuture();
     }
 
-    private CompletionStage<String> getContent(String url) {
+    /*private CompletionStage<String> getContent(String url) {
         return fetch(url)
                 .thenCompose(r -> r.entity().toStrict(3000, materializer))
                 .thenApply(str -> str.getData().utf8String());
-    }
+    }*/
 
     private String getServer(){
-        
+
     }
 }
 
