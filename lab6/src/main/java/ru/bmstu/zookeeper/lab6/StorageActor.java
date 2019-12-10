@@ -5,10 +5,8 @@ import akka.actor.ActorRef;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.logging.Logger;
 
 public class StorageActor extends AbstractActor {
-    private static Logger log = Logger.getLogger(Main.class.getName());
     private ArrayList<String> storage ;
     private Random randomServer;
 
