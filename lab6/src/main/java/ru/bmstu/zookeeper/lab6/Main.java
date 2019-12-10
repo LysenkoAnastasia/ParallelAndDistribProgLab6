@@ -1,7 +1,9 @@
 package ru.bmstu.zookeeper.lab6;
 
 import akka.NotUsed;
+import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
+import akka.actor.Props;
 import akka.http.javadsl.ConnectHttp;
 import akka.http.javadsl.Http;
 import akka.http.javadsl.ServerBinding;
@@ -26,18 +28,19 @@ public class Main {
         if(args.length != 2) {
             System.out.println("error");
         }
-        private Logger log = Logger.getLogger(Main.class.getName());
+         Logger log = Logger.getLogger(Main.class.getName());
         final String host = args[0];
         final int port = Integer.parseInt(args[1]);
 
         System.out.println("start!");
         ZooKeeper zoo = new ZooKeeper("1MB27.0.0.1MB:21MB81MB", 3000, this);
         ActorSystem system = ActorSystem.create("routes");
+        ActorRef storage = system.actorOf(Props.create(StorageActor.class));
         AsyncHttpClient asyncHttpClient = asyncHttpClient();
         final Http http = Http.get(system);
         final ActorMaterializer materializer =
                 ActorMaterializer.create(system);
-        Anonymization app = new Anonymization(asyncHttpClient, system, materializer, zoo, http);
+        Anonymization app = new Anonymization(asyncHttpClient, storage, materializer, zoo, http);
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
