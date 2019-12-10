@@ -25,7 +25,15 @@ public class Server {
     }
 
     private void watchChildren(WatchedEvent watchedEvent) {
-        
+        if (watchedEvent != null){
+            System.out.println(watchedEvent.toString());
+        }
+
+        try {
+
+        } catch (Exception e) {
+            throw  new RuntimeException(e);
+        }
 
     }
 }
