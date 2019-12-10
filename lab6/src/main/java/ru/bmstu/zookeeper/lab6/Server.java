@@ -1,5 +1,6 @@
 package ru.bmstu.zookeeper.lab6;
 
+import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ public class Server {
         this.zoo = new ZooKeeper(connectString, 3000, e -> log.info(e.toString()));
 
         zoo.create(
-                
+                "/server", "".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE,
         )
 
     }
