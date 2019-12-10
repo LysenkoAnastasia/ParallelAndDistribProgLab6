@@ -20,4 +20,8 @@ public class Server {
         );
 
     }
+
+    public void createServer() {
+        
+    }
 }
