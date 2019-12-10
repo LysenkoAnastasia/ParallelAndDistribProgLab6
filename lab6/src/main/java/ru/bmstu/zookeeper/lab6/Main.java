@@ -26,7 +26,7 @@ public class Main {
     public static void main(String[] args) throws Exception{
 
         if(args.length != 2) {
-            System.out.println("error");
+            System.out.println("Anonymizer");
         }
          Logger log = Logger.getLogger(Main.class.getName());
         final String host = args[0];
