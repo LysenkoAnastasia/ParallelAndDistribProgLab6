@@ -18,10 +18,6 @@ public class Server {
         this.zoo = zoo;
         this.storage = storage;
 
-        this.zoo.create(
-                "/servers", "".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT
-        );
-
     }
 
     public void createServer(String host, int port) throws Exception {
