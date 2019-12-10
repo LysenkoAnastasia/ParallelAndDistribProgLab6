@@ -32,7 +32,6 @@ public class Server {
         if (watchedEvent != null){
             System.out.println(watchedEvent.toString());
         }
-
         try {
             saveServer( zoo.getChildren("/servers", this::watchChildren));
         } catch (Exception e) {
