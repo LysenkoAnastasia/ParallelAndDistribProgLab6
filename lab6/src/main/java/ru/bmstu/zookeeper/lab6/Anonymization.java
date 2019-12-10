@@ -73,7 +73,7 @@ public class Anonymization {
     }
 
     private CompletionStage<Response> fetch(Request  request) {
-        return http;
+        return asyncHttpClient.executeRequest(request);
     }
 
     private CompletionStage<String> getContent(String url) {
