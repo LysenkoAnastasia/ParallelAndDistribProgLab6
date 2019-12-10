@@ -26,6 +26,7 @@ public class Server {
     }
 
     private void watchChildren(WatchedEvent watchedEvent) {
+
         if (watchedEvent != null){
             System.out.println(watchedEvent.toString());
         }
@@ -35,6 +36,9 @@ public class Server {
         } catch (Exception e) {
             throw  new RuntimeException(e);
         }
+    }
 
+    public void saveServer() {
+        
     }
 }
