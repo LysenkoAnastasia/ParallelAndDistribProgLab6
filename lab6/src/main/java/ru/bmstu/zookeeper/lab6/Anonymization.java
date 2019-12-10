@@ -1,29 +1,21 @@
 package ru.bmstu.zookeeper.lab6;
 
-import akka.NotUsed;
 import akka.actor.ActorRef;
-import akka.actor.ActorSystem;
-import akka.actor.Props;
 import akka.http.javadsl.Http;
-import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.model.HttpRequest;
-import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.Route;
 import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.Materializer;
-import akka.stream.javadsl.Flow;
 import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.Request;
 import org.asynchttpclient.Response;
 import scala.compat.java8.FutureConverters;
-import scala.concurrent.Future;
 
 import java.util.concurrent.CompletionStage;
 import java.util.logging.Logger;
 
-import static akka.actor.TypedActor.context;
 import static akka.http.javadsl.server.Directives.*;
 
 public class Anonymization {
@@ -72,7 +64,7 @@ public class Anonymization {
                 );
     }
 
-    private String createRequest(String server, String url, int count) {
+    private Request createRequest(String server, String url, int count) {
         return  asyncHttpClient.prepareGet(server)
                 .addQueryParam("url", url)
                 .addQueryParam("count", Integer.toString(count))
@@ -80,8 +72,8 @@ public class Anonymization {
 
     }
 
-    private CompletionStage<Response> fetch(String  url) {
-        return http.singleRequest(HttpRequest.GET(url));
+    private CompletionStage<Response> fetch(Request  request) {
+        return http;
     }
 
     private CompletionStage<String> getContent(String url) {
