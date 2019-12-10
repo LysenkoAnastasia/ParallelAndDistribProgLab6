@@ -26,6 +26,7 @@ import static akka.actor.TypedActor.context;
 import static akka.http.javadsl.server.Directives.*;
 
 public class Anonymization {
+
     AsyncHttpClient asyncHttpClient;
     Materializer materializer;
     ActorRef storage;

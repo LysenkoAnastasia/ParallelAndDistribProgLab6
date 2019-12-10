@@ -15,16 +15,18 @@ import org.apache.zookeeper.ZooKeeper;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.CompletionStage;
+import java.util.logging.Logger;
 
 import static org.asynchttpclient.Dsl.asyncHttpClient;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws Exception{
+
         if(args.length != 2) {
             System.out.println("error");
         }
-
+        Logger log = Logger.getLogger(Server.class.getName());
         final String host = args[0];
         final int port = Integer.parseInt(args[1]);
 
