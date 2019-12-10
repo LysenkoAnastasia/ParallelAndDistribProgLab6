@@ -1,5 +1,7 @@
 package ru.bmstu.zookeeper.lab6;
 
+import org.apache.zookeeper.CreateMode;
+import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
 
@@ -10,12 +12,12 @@ public class Server {
     private ZooKeeper zoo;
     private Logger log = Logger.getLogger(Server.class.getCanonicalName());
 
-    public Server(String connectString) throws IOException {
+    public Server(String connectString) throws IOException, KeeperException, InterruptedException {
         this.zoo = new ZooKeeper(connectString, 3000, e -> log.info(e.toString()));
 
-        zoo.create(
-                "/server", "".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE,
-        )
+        this.zoo.create(
+                "/server", "".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT
+        );
 
     }
 }
