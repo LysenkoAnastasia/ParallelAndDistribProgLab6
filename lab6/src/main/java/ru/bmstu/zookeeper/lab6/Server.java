@@ -16,7 +16,7 @@ public class Server {
         this.zoo = new ZooKeeper(connectString, 3000, e -> log.info(e.toString()));
 
         this.zoo.create(
-                "/server", "".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT
+                "/servers", "".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT
         );
 
     }
