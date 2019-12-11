@@ -21,7 +21,7 @@ public class Server {
         watchChildren(null);
     }
 
-    public void close() {
+    public void close() throws KeeperException, InterruptedException {
         zoo.removeAllWatches("/servers", Watcher.WatcherType.Any, true);
     }
 
