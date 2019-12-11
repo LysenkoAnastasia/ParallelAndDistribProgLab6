@@ -14,6 +14,7 @@ import org.asynchttpclient.Response;
 import scala.compat.java8.FutureConverters;
 
 import java.util.concurrent.CompletionStage;
+import java.util.function.Supplier;
 import java.util.logging.Logger;
 
 import static akka.http.javadsl.server.Directives.*;
@@ -79,6 +80,7 @@ public class Anonymization {
     }
 
     private CompletionStage<Response> fetch(Request  request) {
+        log.info("" + request.getUri());
         return asyncHttpClient.executeRequest(request).toCompletableFuture();
     }
 

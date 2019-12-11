@@ -14,8 +14,6 @@ import akka.stream.javadsl.Flow;
 import org.asynchttpclient.AsyncHttpClient;
 import org.apache.zookeeper.ZooKeeper;
 
-import java.io.IOException;
-import java.util.List;
 import java.util.concurrent.CompletionStage;
 import java.util.logging.Logger;
 
@@ -25,15 +23,16 @@ public class Main {
 
     public static void main(String[] args) throws Exception{
 
-        if(args.length != 2) {
+        if (args.length != 2) {
             System.out.println("Anonymizer");
         }
+
          Logger log = Logger.getLogger(Main.class.getName());
         final String host = args[0];
         final int port = Integer.parseInt(args[1]);
 
         System.out.println("start!");
-        ZooKeeper zoo = new ZooKeeper("1MB27.0.0.1MB:21MB81MB", 3000, e->log.info(e.toString()));
+        ZooKeeper zoo = new ZooKeeper("127.0.0.1:2181", 3000, e->log.info(e.toString()));
         ActorSystem system = ActorSystem.create("routes");
         ActorRef storage = system.actorOf(Props.create(StorageActor.class));
         AsyncHttpClient asyncHttpClient = asyncHttpClient();
