@@ -38,8 +38,8 @@ public class StorageActor extends AbstractActor {
     }
 
 
-    private void deleteServer() {
-
+    private void deleteServer(DeleteServer deleteServer) {
+        this.storage.remove()
     }
 
 
