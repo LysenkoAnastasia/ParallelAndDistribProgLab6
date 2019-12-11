@@ -26,7 +26,7 @@ public class Server {
                 "/servers/" + name, (host + ":" + port).getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT
         );
-        System.out.println("Ceate server");
+        System.out.println("Create server");
     }
 
     private void watchChildren(WatchedEvent watchedEvent) {
@@ -43,10 +43,6 @@ public class Server {
     }
 
     public void saveServer(List<String> servers) {
-        for (String s : servers) {
-
-        }
         this.storage.tell(new PutServer(servers), ActorRef.noSender());
-
     }
 }
