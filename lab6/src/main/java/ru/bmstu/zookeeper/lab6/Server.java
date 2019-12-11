@@ -21,6 +21,9 @@ public class Server {
         watchChildren(null);
     }
 
+    public void close() {
+        zoo.removeAllWatches();
+    }
 
     public void createServer(String host, int port, String name) throws Exception {
         zoo.create(
