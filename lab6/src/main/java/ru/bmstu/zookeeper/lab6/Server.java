@@ -22,7 +22,7 @@ public class Server {
     }
 
     public void close() {
-        zoo.removeAllWatches();
+        zoo.removeAllWatches("/servers", Watcher.WatcherType.Any, true);
     }
 
     public void createServer(String host, int port, String name) throws Exception {
