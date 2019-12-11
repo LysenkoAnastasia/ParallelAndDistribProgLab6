@@ -78,18 +78,13 @@ public class Anonymization {
                 .build();
     }
 
-    /*private Response badRedirectiv(Response response, Throwable exeption, String s) {
-        storage.tell(new DeleteServer(s), ActorRef.noSender());
-        return response;
-    }*/
-
     private CompletionStage<Response> fetch(Request  request) {
         return asyncHttpClient.executeRequest(request).toCompletableFuture();
     }
 
     private String getServerUrl(String server){
         try {
-            return new String();
+            return new String(zoo.getData(server, false, null));
         } catch (Exception exeption){
             throw new RuntimeException(exeption);
 
