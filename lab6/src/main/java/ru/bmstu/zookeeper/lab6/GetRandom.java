@@ -5,8 +5,7 @@ import java.util.Random;
 public class GetRandom {
     private Random random;
 
-    public GetRandom(Random random) {
-        this.random = random;
+    public GetRandom() {
     }
 
     public Random getRandom() {
