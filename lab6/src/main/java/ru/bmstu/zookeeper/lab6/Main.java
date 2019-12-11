@@ -53,6 +53,7 @@ public class Main {
         System.out.println("Server online at" + host + port  +"/\nPress RETURN to stop...");
         System.in.read();
         asyncHttpClient.close();
+        
         zoo.close();
         binding
                 .thenCompose(ServerBinding::unbind)

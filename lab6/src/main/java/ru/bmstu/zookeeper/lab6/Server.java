@@ -21,7 +21,6 @@ public class Server {
         watchChildren(null);
     }
 
-    public 
 
     public void createServer(String host, int port, String name) throws Exception {
         zoo.create(
