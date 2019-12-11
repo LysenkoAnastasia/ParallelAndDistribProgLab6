@@ -75,6 +75,11 @@ public class Anonymization {
 
     }
 
+    private Response badRedirectiv(Response response, Throwable exeption, String s) {
+        
+
+    }
+
     private CompletionStage<Response> fetch(Request  request) {
         return asyncHttpClient.executeRequest(request).toCompletableFuture();
     }
