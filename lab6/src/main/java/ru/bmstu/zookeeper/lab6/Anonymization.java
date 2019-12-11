@@ -88,7 +88,12 @@ public class Anonymization {
     }
 
     private String getServerUrl(String server){
-        return new String();
+        try {
+            return new String();
+        } catch (Exception exeption){
+            throw new RuntimeException(exeption);
+
+        }
     }
 }
 
