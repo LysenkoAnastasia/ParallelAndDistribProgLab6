@@ -4,15 +4,11 @@ import akka.actor.ActorRef;
 import org.apache.zookeeper.*;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class Server {
     private ZooKeeper zoo;
-    private Logger log = Logger.getLogger(Server.class.getName());
     private ActorRef storage;
 
     public Server(ZooKeeper zoo, ActorRef storage) throws IOException, Exception, InterruptedException {
@@ -28,7 +24,7 @@ public class Server {
     public void createServer(String host, int port, String name) throws Exception {
         zoo.create(
                 "/servers/" + name, (host + ":" + port).getBytes(),
-                ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT
+                ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL
         );
         System.out.println("Create server");
     }
