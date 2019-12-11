@@ -22,6 +22,7 @@ public class StorageActor extends AbstractActor {
         return receiveBuilder()
                 .match(PutServer.class, this::putServer)
                 .match(GetRandom.class, this::getRandomServer)
+                .match(DeleteServer.class, this::deleteServer)
                 .build();
     }
 
