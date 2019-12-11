@@ -79,10 +79,10 @@ public class Anonymization {
 
     }
 
-    private Response badRedirectiv(Response response, Throwable exeption, String s) {
+    /*private Response badRedirectiv(Response response, Throwable exeption, String s) {
         storage.tell(new DeleteServer(s), ActorRef.noSender());
         return response;
-    }
+    }*/
 
     private CompletionStage<Response> fetch(Request  request) {
         return asyncHttpClient.executeRequest(request).toCompletableFuture();
