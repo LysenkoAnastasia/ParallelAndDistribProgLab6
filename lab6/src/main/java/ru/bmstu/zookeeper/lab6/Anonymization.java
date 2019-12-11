@@ -76,7 +76,6 @@ public class Anonymization {
                 .addQueryParam("url", url)
                 .addQueryParam("count", Integer.toString(count))
                 .build();
-
     }
 
     /*private Response badRedirectiv(Response response, Throwable exeption, String s) {
