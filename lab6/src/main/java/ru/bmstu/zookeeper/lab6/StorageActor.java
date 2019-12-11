@@ -38,5 +38,9 @@ public class StorageActor extends AbstractActor {
     }
 
 
+    private void deleteServer() {
+
+    }
+
 
 }
