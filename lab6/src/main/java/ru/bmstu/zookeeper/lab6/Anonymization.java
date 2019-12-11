@@ -21,13 +21,13 @@ import static akka.http.javadsl.server.Directives.*;
 
 public class Anonymization {
     private static Logger log = Logger.getLogger(Anonymization.class.getName());
-    Http asyncHttpClient;
+    AsyncHttpClient asyncHttpClient;
     Materializer materializer;
     ActorRef storage;
     ZooKeeper zoo;
     Http http;
 
-    public Anonymization(Http asyncHttpClient, ActorRef storage, ActorMaterializer materializer, ZooKeeper zoo, Http http) {
+    public Anonymization(AsyncHttpClient asyncHttpClient, ActorRef storage, ActorMaterializer materializer, ZooKeeper zoo, Http http) {
         this.materializer = materializer;
         this.asyncHttpClient = asyncHttpClient;
         this.storage = storage;

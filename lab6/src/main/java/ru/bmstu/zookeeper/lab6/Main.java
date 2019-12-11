@@ -41,7 +41,7 @@ public class Main {
                 ActorMaterializer.create(system);
         Server server = new Server(zoo, storage);
         server.createServer(host, port, "localhost:" + port);
-        Anonymization app = new Anonymization(http, storage, materializer, zoo, http);
+        Anonymization app = new Anonymization(asyncHttpClient, storage, materializer, zoo, http);
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
